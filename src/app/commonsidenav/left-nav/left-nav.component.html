@@ -1,0 +1,64 @@
+
+<!-- <mat-nav-list>
+    <div class="logo py-4">
+      <img src="./assets/logo.svg" alt="Company Logo" />
+    </div>
+    <mat-divider></mat-divider>
+    <h2 matSubheader class="mt-2">APPLICATIONS</h2>
+  
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/home">
+      <mat-icon>home</mat-icon> Home
+    </a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard">
+      <mat-icon>dashboard</mat-icon> Dashboard
+    </a>
+    <a mat-list-item> <mat-icon>edit</mat-icon> Link 3 </a>
+    <a mat-list-item> <mat-icon>edit</mat-icon> Link 4 </a>
+    <a mat-list-item> <mat-icon>edit</mat-icon> Link 5 </a>
+    <a mat-list-item> <mat-icon>edit</mat-icon> Link 6 </a>
+  </mat-nav-list>
+   -->
+   <mat-sidenav-container class="height-100 ">
+    <mat-sidenav #drawer class="sidenav custom-sidenav-container" [fixedInViewport]="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]=" 'side' "
+      [opened]="(isHandset$ | async) === false">
+  
+      <mat-toolbar class="bg-header">
+        <div class="logo py-4">
+          <img src="./assets/logo.svg" alt="Company Logo" />
+        </div>
+      </mat-toolbar>
+  
+      <mat-nav-list>
+  
+        <mat-divider></mat-divider>
+        <h2 matSubheader class="mt-2">APPLICATIONS</h2>
+  
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/home">
+          <mat-icon>home</mat-icon> Home
+        </a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard">
+          <mat-icon>dashboard</mat-icon> Dashboard
+        </a>
+        <a mat-list-item>
+          <mat-icon>edit</mat-icon> Link 3
+        </a>
+  
+      </mat-nav-list>
+  
+    </mat-sidenav>
+  
+    <mat-sidenav-content >
+      <mat-toolbar color="primary" class=" border-bottom-grey bg-header">
+        <button type="button" class="bg-header" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon" >menu</mat-icon>
+        </button>
+      </mat-toolbar>
+      <!-- Add Content Here -->
+      <div class="content-wrapper">
+        <section class="container-fluid fixed-header-margin">
+          <router-outlet></router-outlet>
+        </section>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

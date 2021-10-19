@@ -64,7 +64,7 @@ import { UserService } from './shared/user.service';
 //other
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import { EmployeeComponent } from './employee/employee.component';
+// import { EmployeeComponent } from './employee/employee.component';
 import { HeaderComponent } from './header/header.component';
 // import { SidenavComponent } from './sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
@@ -80,7 +80,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SignUpComponent,
     //UserProfileComponent,
     SignInComponent,
-    EmployeeComponent,
+    // EmployeeComponent,
     HeaderComponent,
     // SidenavComponent,
     HomeComponent,

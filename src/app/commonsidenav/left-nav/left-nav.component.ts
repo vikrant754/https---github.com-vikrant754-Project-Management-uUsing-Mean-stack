@@ -20,6 +20,7 @@ import {
   Breakpoints
 } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-left-nav',
@@ -32,10 +33,19 @@ export class LeftNavComponent implements OnInit {
       map(result => result.matches),
       shareReplay()
     );
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(private breakpointObserver: BreakpointObserver, private router: Router) { }
 
   ngOnInit(): void {
   }
+  navigateTo(route:string){
+    if(route == 'createProject'){
+      this.router.navigate(['empmanage/createproject'])
 
+    }
+      
+    
+
+  }
 }
+
 

@@ -34,11 +34,11 @@ export class EmployeeService {
   }
 
   putEmployee(emp: Employee) {
-    return this.http.put(this.baseURL + `/${emp._id}`, emp);
+    return this.http.put(this.baseURL + `/${emp.id}`, emp);
   }
 
-  deleteEmployee(_id: string) {
-    return this.http.delete(this.baseURL + `/${_id}`);
+  deleteEmployee(id: string) {
+    return this.http.delete(this.baseURL + `/${id}`);
   }
 
 }

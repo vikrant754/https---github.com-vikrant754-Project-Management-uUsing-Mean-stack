@@ -25,23 +25,24 @@
   
       <mat-toolbar class="bg-header">
         <div class="logo py-4">
-          <img src="./assets/logo.svg" alt="Company Logo" />
+          <img src="./assets/img/download.png" id="icon" alt="Company Logo" />
+          <!-- <img src="./assets/img/single_user.png" id="icon" alt="Company Logo" /> -->
         </div>
       </mat-toolbar>
   
       <mat-nav-list>
   
         <mat-divider></mat-divider>
-        <h2 matSubheader class="mt-2">APPLICATIONS</h2>
+        <h2 matSubheader class="mt-2">User_Dashboard</h2>
   
         <a mat-list-item routerLinkActive="list-item-active" routerLink="/home">
           <mat-icon>home</mat-icon> Home
         </a>
         <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard">
-          <mat-icon>dashboard</mat-icon> Dashboard
+          <mat-icon>dashboard</mat-icon> Project
         </a>
-        <a mat-list-item>
-          <mat-icon>edit</mat-icon> Link 3
+        <a mat-list-item (click)="navigateTo('createProject')">
+          <mat-icon>edit</mat-icon> Create_Project
         </a>
   
       </mat-nav-list>

@@ -71,13 +71,14 @@
       vertical-align: middle;
       margin-right: 1rem;
     }
-  .logo {
+   .logo { 
     text-align: center;
     padding: 2.6rem 1rem;
     
+    
   }
   .logo>.img{
-    width: 200px;
+     width: 200px; 
   }
   .mat-sidenav{
     width: 212px !important;

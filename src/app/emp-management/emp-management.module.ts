@@ -16,13 +16,15 @@ import { AuthGuard } from '../auth/auth.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../auth/auth.interceptor';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
+import { EmployeeComponent } from '../employee/employee.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     EmpManagementComponent,
     HomeComponent,
-    UserProfileComponent
+    UserProfileComponent,EmployeeComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +35,7 @@ import { UserProfileComponent } from '../user-profile/user-profile.component';
     MatMenuModule,
     MatIconModule,
     MatDividerModule,
-    MatListModule,
+    MatListModule,FormsModule
   ],
   exports: [RouterModule],
   providers: [{

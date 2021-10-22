@@ -18,13 +18,21 @@ import { AuthInterceptor } from '../auth/auth.interceptor';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
 import { EmployeeComponent } from '../employee/employee.component';
 import { FormsModule } from '@angular/forms';
+import { EmpCrudComponent } from './emp-crud/emp-crud.component';
+import { EmpViewComponent } from './emp-view/emp-view.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { EmployeeService } from '../shared/employee.service';
+
 
 
 @NgModule({
   declarations: [
     EmpManagementComponent,
     HomeComponent,
-    UserProfileComponent,EmployeeComponent
+    UserProfileComponent,EmployeeComponent, EmpCrudComponent, EmpViewComponent
   ],
   imports: [
     CommonModule,
@@ -35,13 +43,18 @@ import { FormsModule } from '@angular/forms';
     MatMenuModule,
     MatIconModule,
     MatDividerModule,
-    MatListModule,FormsModule
+    MatListModule,FormsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
+  entryComponents:[EmpCrudComponent],
   exports: [RouterModule],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  },AuthGuard],
+  },AuthGuard,EmployeeService],
 })
 export class EmpManagementModule { }

@@ -1,0 +1,25 @@
+<div class="row mt-3">
+     <div  class="col-md-12 text-right">
+         <button class="btn btn-primary" type="button" (click)="addProjectDialog()">Add Project</button>
+     </div>
+
+</div>
+
+<div class="row mt-3">
+    <div  class="col m12 ">
+        <table>
+            <tr>
+                <th>Project_Name</th>
+                <th>Task</th>
+                <th>Employee_Name </th>
+                <th>Project_Status</th>
+            </tr>
+   
+            <tr *ngFor="let  emp of employeeList">
+              <td>emp.name</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+

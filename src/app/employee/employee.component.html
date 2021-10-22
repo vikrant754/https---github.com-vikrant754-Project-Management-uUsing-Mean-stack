@@ -20,18 +20,19 @@
                     <label>Task :</label>
                   </div>
                 </div>
+                 <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="EmployeeName " #name="ngModel" [(ngModel)]="employeeData.salary" placeholder="EmployeeName">
+                    <label>EmployeeName :</label>
+                  </div>
+                </div>
                 <div class="row">
                   <div class="input-field col s12">
                     <input type="text" name="Remarks" #name="ngModel" [(ngModel)]="employeeData.office" placeholder="Work Status">
                     <label>Remarks :</label>
                   </div>
                 </div>
-                <!-- <div class="row">
-                  <div class="input-field col s12">
-                    <input type="text" name="salary" #name="ngModel" [(ngModel)]="employeeData.name" placeholder="Salary per annum">
-                    <label>Salary :</label>
-                  </div>
-                </div> -->
+                
                 <div class="row">
                   <div class="input-field col s12">
                     <button class="btn btn-custom right" type="button" (click)="resetForm()">Reset</button>
@@ -40,17 +41,17 @@
                 </div>
               </form>
             </div>
-            <!-- <div class="col s7">
+            <div class="col s7">
                 <table class="responsive-table highlight">
                     <thead>
                       <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th></th>
+                        <th>EmployeeName</th>
+                        <th>Task</th>
+                        <th>Remarks</th>
+                        <!-- <th></th> -->
                       </tr>
                     </thead>
-                    <tr *ngFor="let emp of employeeService.employees">
+                    <!-- <tr *ngFor="let emp of employeeService.employees">
                       <td>{{emp.name}}</td>
                       <td>{{emp.position}}</td>
                       <td>{{emp.office}}</td>
@@ -62,9 +63,9 @@
                             <i class="material-icons">delete</i>
                           </a>
                         </td>
-                    </tr>
+                    </tr> -->
                   </table>
-            </div> -->
+            </div>
           </div>
         </div>
       </div>

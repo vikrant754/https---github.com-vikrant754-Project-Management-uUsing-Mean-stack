@@ -4,6 +4,7 @@ import { AuthGuard } from '../auth/auth.guard';
 import { EmployeeComponent } from '../employee/employee.component';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
 import { EmpManagementComponent } from './emp-management.component';
+import { EmpViewComponent } from './emp-view/emp-view.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
@@ -20,7 +21,7 @@ const routes: Routes = [
         // path: 'userprofile', component: UserProfileComponent
      },
      {
-      path: 'createproject', component: EmployeeComponent
+      path: 'createproject', component: EmpViewComponent
     // path: 'userprofile', component: UserProfileComponent
  },
       ]

@@ -5,21 +5,129 @@
 
 </div>
 
+
 <div class="row mt-3">
-    <div  class="col m12 ">
-        <table>
-            <tr>
-                <th>Project_Name</th>
-                <th>Task</th>
-                <th>Employee_Name </th>
-                <th>Project_Status</th>
-            </tr>
+<table mat-table class="col m12 border-grey" [dataSource]="dataSource" multiTemplateDataRows>
+
+     <ng-container matColumnDef="serial">
+        <th class=" padding-left-24 table-header" mat-header-cell *matHeaderCellDef width="12%">
+            SL#
+        </th>
+        <td class="padding-left-24 table-data " mat-cell *matCellDef="let i = dataIndex" width="12%" (click)="showDetails($event)">
+            {{i+1}}
+        </td>
+    </ng-container> 
+
+    <ng-container matColumnDef="projectName">
+        <th class="  table-header" mat-header-cell *matHeaderCellDef width="30%">
+           Project Name
+        </th>
+        <td class=" table-data " mat-cell *matCellDef="let element" width="30%" (click)="showDetails($event)">
+            {{element.projectname}}
+        </td>
+    </ng-container>
+
+     <ng-container matColumnDef="addTask">
+        <th class="   table-header" mat-header-cell *matHeaderCellDef width="16%">
+           Add Task
+        </th>
+        <td class=" table-data" mat-cell *matCellDef="let project" width="16%" (click)="showDetails($event)">
+            <button class="btn btn-primary" type="button" (click)="addaTaskDialog(project)">Add Task</button>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+        <th class="  table-header" mat-header-cell *matHeaderCellDef width="16%">
+            Edit
+        </th>
+        <td class=" table-data " mat-cell *matCellDef="let project" width="16%" (click)="showDetails($event)">
+            <button class="btn btn-primary" type="button" (click)="editProjectDialog(project)">Edit Project</button>
+        </td>
+    </ng-container>
+
+   <ng-container matColumnDef="delete">
+        <th class="  padding-left-24 table-header" mat-header-cell *matHeaderCellDef width="16%">
+            Delete
+        </th>
+        <td class=" table-data padding-left-24" mat-cell *matCellDef="let project" width="16%" (click)="showDetails($event)">
+            <button class="btn btn-danger" type="button" (click)="deleteProject(project._id)">Delete Project</button>
+        </td>
+    </ng-container>
+
    
-            <tr *ngFor="let  emp of employeeList">
-              <td>emp.name</td>
-            </tr>
-        </table>
-    </div>
 
+    <ng-container matColumnDef="expand">
+        <th mat-header-cell *matHeaderCellDef class="table-header table-text-header " width="10%">
+            View Task
+        </th>
+        <td mat-cell *matCellDef="let element" width="3%">
+
+            <span *ngIf="!element.isExpanded" class="fa fa-angle-down font-size-15 font-weight-bold">Expand</span>
+            <span *ngIf="element.isExpanded" class="fa fa-angle-up font-size-15 font-weight-bold">Collapse</span>
+
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="expandedDetail">
+        <mat-cell [attr.colspan]="displayedColumns.length" *matCellDef="let project; let i = dataIndex">
+            <div class="width-100 mt-3">
+                <table mat-table [dataSource]="project.taskList" class="border-grey">
+                     <ng-container matColumnDef="serial">
+                        <th class="table-header table-text-header padding-left-24" mat-header-cell *matHeaderCellDef>
+                            Serial
+                        </th>
+                        <td class="padding-left-24 table-data " mat-cell *matCellDef="let i = index">
+                            {{i+1}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="taskname">
+                        <th class=" table-header table-text-header padding-left-24 " mat-header-cell *matHeaderCellDef>
+                            Task Name
+                        </th>
+                        <td class="padding-left-24 table-data" mat-cell *matCellDef="let task">
+                            {{task.taskname}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="empname">
+                        <th class=" table-header table-text-header padding-left-24 " mat-header-cell *matHeaderCellDef>
+                            Employee Name
+                        </th>
+                        <td class="padding-left-24 table-data" mat-cell *matCellDef="let task">
+                            {{task.employeename}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="remarks">
+                        <th class=" table-header table-text-header padding-left-24 " mat-header-cell *matHeaderCellDef>
+                            Remarks
+                        </th>
+                        <td class="padding-left-24 table-data" mat-cell *matCellDef="let task">
+                            {{task.remarks}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="status">
+                        <th class=" table-header table-text-header padding-left-24 " mat-header-cell *matHeaderCellDef>
+                            Status
+                        </th>
+                        <td class="padding-left-24 table-data" mat-cell *matCellDef="let task">
+                            {{task.status}}
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnsFirst" class="custom"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsFirst;"></tr>
+               </table>
+            </div>
+        </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns" class="custom-mat-header custom-mat-bg-header"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns; let rowIndex = index" matRipple class="element-row custom-mat-header matTableFirst" [class.expanded]="row.isExpanded" (click)="expandCollapse(row, rowIndex)">
+    </mat-row>
+    <mat-row class="overflow-hidden" *matRowDef="let row; columns: ['expandedDetail'];" [@detailExpand]="row.isExpanded == true ? 'expanded' : 'collapsed'">
+    </mat-row>
+
+
+</table>
 </div>
-

@@ -1,0 +1,35 @@
+.mat-row ,.mat-header-row{
+    
+    align-items: initial !important;
+}
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    padding: 0;
+    border-bottom-width: 0px !important;
+    border: 0px !important;
+}
+
+.table-header{
+    padding: 5px;
+     background-color: #fff !important;
+     font-size: 16px !important;
+     font-family:  Regular;
+     font-weight: bold;
+}
+.border-grey{
+    border: 1px solid #ddd !important;
+}
+.width-100{
+    width: 100% !important;
+}
+.custom >th.mat-header-cell{
+    border-bottom: 1px solid #ddd !important;
+}
+
+.table-data{
+    padding: 5px;
+     background-color: #fff !important;
+     font-size: 16px !important;
+     font-family:  Regular;
+     font-weight: normal;
+}
+

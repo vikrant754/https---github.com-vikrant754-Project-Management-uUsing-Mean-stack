@@ -1,7 +1,12 @@
-export class Employee {
-    id: any ;
-    name: string = ''  ;
-    position: string = '';
-    office: string = '';
-    salary: string = '';
+
+export class ProjectDto {
+    _id: any ;
+    projectname: string = ''  ;
+    taskList: Task[]=[]
+}
+export class  Task{
+    taskname: string= '';
+    remarks: string = '';
+    employeename:string='';
+    status: string = '';
 }

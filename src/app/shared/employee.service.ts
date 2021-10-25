@@ -15,26 +15,31 @@ import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 //import { map } from 'rxjs/operators';
 
-import { Employee } from './employee.model';
+import {  ProjectDto } from './employee.model';
 
 @Injectable()
 export class EmployeeService {
-  selectedEmployee: Employee | undefined;
-  employees: Employee[] | undefined;
-  readonly baseURL = 'http://localhost:3000/employees';
+  selectedProject: ProjectDto | undefined;
+  projects: ProjectDto[] | undefined;
+  readonly baseURL = 'http://localhost:3000/api';
+  
 
   constructor(private http: HttpClient) { }
 
-  postEmployee(emp: Employee) {
-    return this.http.post(this.baseURL, emp);
+  postEmployee(projectData: ProjectDto) {
+    return this.http.post(this.baseURL+'/employ', projectData);
+  }
+
+  updateProject(projectData: ProjectDto) {
+    return this.http.post(this.baseURL+'/updateEmployee', projectData);
   }
 
   getEmployeeList() {
-    return this.http.get(this.baseURL);
+    return this.http.get(this.baseURL+'/getAllProjects');
   }
 
-  putEmployee(emp: Employee) {
-    return this.http.put(this.baseURL + `/${emp.id}`, emp);
+  putEmployee(emp: ProjectDto) {
+    return this.http.put(this.baseURL + `/${emp._id}`, emp);
   }
 
   deleteEmployee(id: string) {

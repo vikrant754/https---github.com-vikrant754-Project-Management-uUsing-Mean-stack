@@ -25,7 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { EmployeeService } from '../shared/employee.service';
-
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -48,6 +48,7 @@ import { EmployeeService } from '../shared/employee.service';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTableModule
   ],
   entryComponents:[EmpCrudComponent],
   exports: [RouterModule],

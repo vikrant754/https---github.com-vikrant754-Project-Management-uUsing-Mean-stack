@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Employee } from 'src/app/shared/employee.model';
+import { ProjectDto, Task } from 'src/app/shared/employee.model';
+
 
 @Component({
   selector: 'app-emp-crud',
@@ -8,17 +9,31 @@ import { Employee } from 'src/app/shared/employee.model';
   styleUrls: ['./emp-crud.component.css']
 })
 export class EmpCrudComponent implements OnInit {
- employeeData = new Employee();
-  constructor( public dialogRef: MatDialogRef<EmpCrudComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
+ projectData = new ProjectDto();
+ taskData=new Task();
+ projectName:string=''
+
+  constructor( public dialogRef: MatDialogRef<EmpCrudComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+   if(data['editProject']=='editProject'){
+     this.projectName=data['projectName']
+   }
+  }
 
   ngOnInit(): void {
   }
 
   resetForm(){
-    this.employeeData=new Employee();
+    this.projectData=new ProjectDto();
   }
   saveForm(){
-    this.dialogRef.close({flag:true, employeeData:this.employeeData})
+    this.dialogRef.close({flag:true, projectData:this.projectData})
+  }
+  saveTask(){
+    this.dialogRef.close({flag:true, taskData:this.taskData})
+  }
+  
+  updateProject(){
+    this.dialogRef.close({flag:true, projectName:this.projectName})
   }
   cancel(){
     this.dialogRef.close({flag:false})

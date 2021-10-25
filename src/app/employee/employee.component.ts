@@ -18,7 +18,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { EmployeeService } from '../shared/employee.service';
-import { Employee } from '../shared/employee.model';
+import {  ProjectDto } from '../shared/employee.model';
 
 declare var M: any;
 
@@ -29,7 +29,7 @@ declare var M: any;
   providers: [EmployeeService]
 })
 export class EmployeeComponent implements OnInit {
- employeeData = new Employee();
+ projectData = new ProjectDto();
   constructor(public employeeService: EmployeeService) { }
 
   ngOnInit() {
@@ -39,12 +39,12 @@ export class EmployeeComponent implements OnInit {
 
   resetForm() {
    
-  this.employeeData = new Employee();
+  this.projectData = new ProjectDto();
 
   }
 saveForm() {
-    console.log(this.employeeData);
-      this.employeeService.postEmployee(this.employeeData).subscribe((res) => {
+    console.log(this.projectData);
+      this.employeeService.postEmployee(this.projectData).subscribe((res) => {
         this.resetForm();
         this.refreshEmployeeList();
         M.toast({ html: 'Saved successfully', classes: 'rounded' });
@@ -61,7 +61,7 @@ saveForm() {
 
   refreshEmployeeList() {
     this.employeeService.getEmployeeList().subscribe((res) => {
-      this.employeeService.employees = res as Employee[];
+      // this.employeeService.employees = res as ProjectDto[];
     });
   }
 

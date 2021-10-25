@@ -1,56 +1,145 @@
+<div *ngIf="data['addProject']=='addProject'">
+  <form #employeeForm="ngForm">
+    <!-- <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="employeeData.id"> -->
+    <div class="row">
+      <!-- <mat-form-field class="col m12">
+            <mat-label>Project Name&nbsp;:</mat-label>
+          <input matInput name="Project name" #name="ngModel" [(ngModel)]="employeeData.name" placeholder="Enter Project name" required>
+        </mat-form-field> -->
+      <div class="input-field col s12">
+        <input type="text" name="Project name" #name="ngModel" [(ngModel)]="projectData.projectname"
+          placeholder="Enter Project name" required>
+        <label>Project name :
+          <label class="red-text">*</label>
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <!-- <mat-form-field class="col m12">
+            <mat-label>                    <label>Task :</label>
+                &nbsp;:</mat-label>
+            <input type="text" matInput name="Task" #name="ngModel" [(ngModel)]="employeeData.position" placeholder="Eg : Testing">
+        </mat-form-field> -->
+      <!-- <div class="input-field col s12">
+        <input type="text" name="Task" #name="ngModel" [(ngModel)]="employeeData.position" placeholder="Eg : Testing">
+        <label>Task :</label>
+      </div> -->
+    </div>
+    <div class="row">
+      <!-- <mat-form-field class="col m12">
+            <mat-label>EmployeeName&nbsp;:</mat-label>
+            <input type="text" matInput name="EmployeeName " #name="ngModel" [(ngModel)]="employeeData.salary" placeholder="EmployeeName">
+        </mat-form-field> -->
+      <!-- <div class="input-field col s12">
+        <input type="text" name="EmployeeName " #name="ngModel" [(ngModel)]="employeeData.salary" placeholder="EmployeeName">
+        <label>EmployeeName :</label>
+      </div> -->
+    </div>
+    <div class="row">
+      <!-- <mat-form-field class="col m12">
+            <mat-label>Remarks&nbsp;:</mat-label>
+            <input type="text" matInput name="Remarks" #name="ngModel" [(ngModel)]="employeeData.office" placeholder="Work Status">
+        </mat-form-field> -->
+      <!-- <div class="input-field col s12">
+        <input type="text" name="Remarks" #name="ngModel" [(ngModel)]="employeeData.office" placeholder="Work Status">
+        <label>Remarks :</label>
+      </div> -->
+    </div>
 
-              <form #employeeForm="ngForm" >
-                <!-- <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="employeeData.id"> -->
-                <div class="row">
-                    <!-- <mat-form-field class="col m12">
-                        <mat-label>Project Name&nbsp;:</mat-label>
-                      <input matInput name="Project name" #name="ngModel" [(ngModel)]="employeeData.name" placeholder="Enter Project name" required>
-                    </mat-form-field> -->
-                  <div class="input-field col s12">
-                    <input type="text" name="Project name" #name="ngModel" [(ngModel)]="employeeData.name" placeholder="Enter Project name" required>
-                    <label>Project name :
-                      <label class="red-text">*</label>
-                    </label>
-                  </div>
-                </div>
-                <div class="row">
-                    <!-- <mat-form-field class="col m12">
-                        <mat-label>                    <label>Task :</label>
-                            &nbsp;:</mat-label>
-                        <input type="text" matInput name="Task" #name="ngModel" [(ngModel)]="employeeData.position" placeholder="Eg : Testing">
-                    </mat-form-field> -->
-                  <div class="input-field col s12">
-                    <input type="text" name="Task" #name="ngModel" [(ngModel)]="employeeData.position" placeholder="Eg : Testing">
-                    <label>Task :</label>
-                  </div>
-                </div>
-                 <div class="row">
-                    <!-- <mat-form-field class="col m12">
-                        <mat-label>EmployeeName&nbsp;:</mat-label>
-                        <input type="text" matInput name="EmployeeName " #name="ngModel" [(ngModel)]="employeeData.salary" placeholder="EmployeeName">
-                    </mat-form-field> -->
-                  <div class="input-field col s12">
-                    <input type="text" name="EmployeeName " #name="ngModel" [(ngModel)]="employeeData.salary" placeholder="EmployeeName">
-                    <label>EmployeeName :</label>
-                  </div>
-                </div>
-                <div class="row">
-                    <!-- <mat-form-field class="col m12">
-                        <mat-label>Remarks&nbsp;:</mat-label>
-                        <input type="text" matInput name="Remarks" #name="ngModel" [(ngModel)]="employeeData.office" placeholder="Work Status">
-                    </mat-form-field> -->
-                  <div class="input-field col s12">
-                    <input type="text" name="Remarks" #name="ngModel" [(ngModel)]="employeeData.office" placeholder="Work Status">
-                    <label>Remarks :</label>
-                  </div>
-                </div>
-                
-                <div class="row">
-                  <div class="input-field col s12">
-                    <button class="btn btn-secondary right" type="button" (click)="cancel()">Cancel</button>
-                    <button class="btn btn-danger right" type="button" (click)="resetForm()">Reset</button>
-                    <button class="btn btn-primary right" type="submit" [disabled]="!employeeForm.valid"(click)="saveForm()">Save</button>
-                  </div>
-                </div>
-              </form>
-            
+    <div class="row">
+      <div class="input-field col s12">
+        <button class="btn btn-secondary right" type="button" (click)="cancel()">Cancel</button>
+        <button class="btn btn-danger right" type="button" (click)="resetForm()">Reset</button>
+        <button class="btn btn-primary right" type="submit" [disabled]="!employeeForm.form.valid"
+          (click)="saveForm()">Save</button>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+
+
+<div *ngIf="data['addTask']=='addTask'">
+  <form #taskForm="ngForm">
+
+    <div class="row">
+      <!-- <mat-form-field class="col m12">
+            <mat-label>                    <label>Task :</label>
+                &nbsp;:</mat-label>
+            <input type="text" matInput name="Task" #name="ngModel" [(ngModel)]="employeeData.position" placeholder="Eg : Testing">
+        </mat-form-field> -->
+      <div class="input-field col s12">
+        <input type="text" name="Task" #name="ngModel" [(ngModel)]="taskData.taskname" placeholder="Eg : Testing">
+        <label>Task :</label>
+      </div>
+    </div>
+    <div class="row">
+      <!-- <mat-form-field class="col m12">
+            <mat-label>EmployeeName&nbsp;:</mat-label>
+            <input type="text" matInput name="EmployeeName " #name="ngModel" [(ngModel)]="employeeData.salary" placeholder="EmployeeName">
+        </mat-form-field> -->
+      <div class="input-field col s12">
+        <input type="text" name="EmployeeName " #name="ngModel" [(ngModel)]="taskData.employeename"
+          placeholder="EmployeeName">
+        <label>EmployeeName :</label>
+      </div>
+    </div>
+    <div class="row">
+      <!-- <mat-form-field class="col m12">
+            <mat-label>Remarks&nbsp;:</mat-label>
+            <input type="text" matInput name="Remarks" #name="ngModel" [(ngModel)]="employeeData.office" placeholder="Work Status">
+        </mat-form-field> -->
+      <div class="input-field col s12">
+        <input type="text" name="Remarks" #name="ngModel" [(ngModel)]="taskData.remarks" placeholder="Work Status">
+        <label>Remarks :</label>
+      </div>
+    </div>
+    <div class="row">
+      <!-- <mat-form-field class="col m12">
+          <mat-label>Remarks&nbsp;:</mat-label>
+          <input type="text" matInput name="Remarks" #name="ngModel" [(ngModel)]="employeeData.office" placeholder="Work Status">
+      </mat-form-field> -->
+      <div class="input-field col s12">
+        <input type="text" name="Remarks" #name="ngModel" [(ngModel)]="taskData.status" placeholder="Work Status">
+        <label>Status :</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <button class="btn btn-secondary right" type="button" (click)="cancel()">Cancel</button>
+        
+        <button class="btn btn-primary right" type="submit" (click)="saveTask()"
+        >Save</button>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+<div *ngIf="data['editProject']=='editProject'">
+  <form #editProjectForm="ngForm">
+  
+    <div class="row">
+     
+      <div class="input-field col s12">
+        <input type="text" name="Project name" #name="ngModel" [(ngModel)]="projectName"
+          placeholder="Enter Project name" required>
+        <label>Project name :
+          <label class="red-text">*</label>
+        </label>
+      </div>
+    </div>
+    
+
+    <div class="row">
+      <div class="input-field col s12">
+        <button class="btn btn-secondary right" type="button" (click)="cancel()">Cancel</button>
+        <button class="btn btn-danger right" type="button" (click)="resetForm()">Reset</button>
+        <button class="btn btn-primary right" type="submit" [disabled]="!editProjectForm.form.valid"
+          (click)="saveForm()">Save</button>
+      </div>
+    </div>
+  </form>
+
+</div>

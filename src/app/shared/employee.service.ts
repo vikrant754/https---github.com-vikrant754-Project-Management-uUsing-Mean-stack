@@ -34,8 +34,8 @@ export class EmployeeService {
     return this.http.post(this.baseURL+'/updateEmployee', projectData);
   }
 
-  getEmployeeList() {
-    return this.http.get(this.baseURL+'/getAllProjects');
+  getEmployeeList(email:string) {
+    return this.http.get(this.baseURL+`/getAllProjects/${email}`);
   }
 
   putEmployee(emp: ProjectDto) {

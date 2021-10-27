@@ -1,6 +1,7 @@
 
 export class ProjectDto {
-    _id: any ;
+    _id: any    ;
+    createdByUser:string='';
     projectname: string = ''  ;
     taskList: Task[]=[]
 }

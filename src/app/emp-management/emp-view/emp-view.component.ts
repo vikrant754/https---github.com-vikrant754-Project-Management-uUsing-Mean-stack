@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProjectDto, Task } from 'src/app/shared/employee.model';
 import { EmployeeService } from 'src/app/shared/employee.service';
+import { UserService } from 'src/app/shared/user.service';
 import { EmpCrudComponent } from '../emp-crud/emp-crud.component';
 declare var M: any;
 @Component({
@@ -25,11 +26,30 @@ export class EmpViewComponent implements OnInit {
   
 displayedColumns=['serial','projectName','addTask','edit','delete','expand']
 displayedColumnsFirst=['serial','taskname','empname','remarks','status']
-
-  constructor(private dialog :MatDialog,private employeeService: EmployeeService) { }
+userDetails:any;
+currentUser:string=''
+  constructor(private dialog :MatDialog,private employeeService: EmployeeService,private userService: UserService) { }
 
   ngOnInit(): void {
-    this.refreshEmployeeList();
+    this.getCurrentUser();
+    
+  }
+  getCurrentUser()
+  {
+    this.userService.getUserProfile().subscribe(
+      res => {
+        let object:any;
+           object=res;
+       this.userDetails =object['user'];
+       this.currentUser =this.userDetails.email;
+       console.log('current',this.currentUser)
+       this.refreshEmployeeList();
+      },
+      err => { 
+        console.log(err);
+        
+      }
+    );
   }
   addProjectDialog(){
       const dialogRef= this.dialog.open(EmpCrudComponent,{
@@ -41,6 +61,7 @@ displayedColumnsFirst=['serial','taskname','empname','remarks','status']
        dialogRef.afterClosed().subscribe(res => {
            if(res['flag']){
              this.projectData=res['projectData']
+             this.projectData.createdByUser= this.currentUser;
             this.employeeService.postEmployee(this.projectData).subscribe((res) => {
             
               this.refreshEmployeeList();
@@ -51,7 +72,8 @@ displayedColumnsFirst=['serial','taskname','empname','remarks','status']
   }
 
   refreshEmployeeList() {
-    this.employeeService.getEmployeeList().subscribe((res) => {
+    console.log('string',this.currentUser)
+    this.employeeService.getEmployeeList(this.currentUser).subscribe((res) => {
       this.projectList = res as ProjectDto[];
       this.dataSource=new MatTableDataSource(this.projectList)
       console.log(this.projectList)
